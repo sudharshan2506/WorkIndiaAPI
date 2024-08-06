@@ -1,5 +1,5 @@
 Flask Shorts API
-Overview
+Overview:
 This Flask application provides an API for managing and retrieving "shorts" (news articles, posts, etc.). It includes endpoints for creating, filtering, and searching shorts. The API is protected with an API key for administrative actions and requires authorization for access.
 
 Configuration
