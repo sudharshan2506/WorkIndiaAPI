@@ -22,16 +22,16 @@ API-KEY: your-secret-api-key
 3. Create Short
 Endpoint: POST /api/shorts/create
 Headers:
-Content-Type: application/json
+Content-Type: raw/json
 API-KEY: your-secret-api-key
 
 4. Get Shorts Feed
 Endpoint: GET /api/shorts/feed
 Request Headers:
-No special headers required.
+API-KEY: your-secret-api-key
 
 5. Filter Shorts
 Endpoint: GET /api/shorts/filter
 Headers:
-Authorization: Bearer your-secret-token
+API-KEY: your-secret-api-key
 ```
