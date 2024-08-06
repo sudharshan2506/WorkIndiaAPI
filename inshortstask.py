@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from uuid import uuid4
-
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 CORS(app) 
 posts = []
 API_KEY = "WorkIndia"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shorts.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 def authenticate_request(req):
     api_key = req.headers.get('X-API-KEY')
     return api_key == API_KEY
@@ -18,7 +21,7 @@ def create_short():
             "status_code": 403
         }), 403
     data = request.json
-
+    
     # Validate required fields
     required_fields = ["category", "title", "author", "publish_date", "content"]
     for field in required_fields:
