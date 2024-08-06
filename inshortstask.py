@@ -1,14 +1,17 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from uuid import uuid4
-from flask_sqlalchemy import SQLAlchemy
+#from flask_mysqldb import MySQL
 app = Flask(__name__)
 CORS(app) 
 posts = []
 API_KEY = "WorkIndia"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shorts.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'workindia'
+#mysql=MySQL(app)
+
 def authenticate_request(req):
     api_key = req.headers.get('X-API-KEY')
     return api_key == API_KEY
